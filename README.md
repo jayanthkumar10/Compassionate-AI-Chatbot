@@ -1,6 +1,7 @@
 # 💬 Compassionate AI Chatbot (Local Ollama Prototype)
 
-![Chatbot Sneak Peek Image](image_a3904a.png) 
+![image](https://github.com/user-attachments/assets/99f61317-8f39-4480-ac49-75ca70d605b9)
+
 *A visual representation of the chatbot's supportive flow.*
 
 ## 🌟 Overview
