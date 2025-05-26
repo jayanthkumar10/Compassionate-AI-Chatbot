@@ -1,0 +1,271 @@
+/* Custom CSS Variables for easy theme management */
+:root {
+    --primary-color: #6a994e; /* Darker soothing green */
+    --primary-light: #8ec371; /* Lighter soothing green */
+    --secondary-color: #FFFFFF; /* PURE WHITE for overall body background */
+    --text-color: #333333; /* Dark gray for general text */
+    --text-light: #555555; /* Medium gray for taglines/less prominent text */
+    --border-color: #e0e0e0;
+    --chat-bubble-user: #e0f2f1; /* Very light blue-green for user bubbles */
+    --chat-bubble-bot: #FFFFFF; /* PURE WHITE for bot bubbles and main container */
+    --shadow-prominent: rgba(0, 0, 0, 0.2); /* More prominent shadow */
+    --warning-bg: #ffe0b2; /* Light orange for warnings */
+    --warning-border: #ff9800; /* Darker orange for warning border */
+}
+
+/* Base Styles (apply to Gradio's root elements) */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    /* Force body background to pure white */
+    background-color: var(--secondary-color) !important;
+    color: var(--text-color) !important; /* Ensure main text is dark */
+    line-height: 1.6;
+    padding: 20px; /* Padding around the entire Gradio app */
+    box-sizing: border-box;
+}
+
+/* Gradio's main container */
+/* This targets the main content area Gradio creates for gr.Blocks */
+.gradio-container {
+    /* Force container background to pure white */
+    background-color: var(--chat-bubble-bot) !important;
+    border-radius: 16px;
+    /* Enhanced shadow */
+    box-shadow: 0 10px 30px var(--shadow-prominent) !important;
+    width: 95%;
+    max-width: 760px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    box-sizing: border-box;
+    margin: auto; /* Center the container */
+    min-height: 80vh; /* Ensure it takes up sufficient vertical space */
+}
+
+/* Custom Header (injected via gr.Markdown) */
+.chat-header-custom {
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.chat-header-custom h1 {
+    color: var(--primary-color) !important; /* Ensure header color is dark green */
+    font-size: 2.2em;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.chat-header-custom .tagline {
+    color: var(--text-light) !important; /* Ensure tagline color is darker */
+    font-size: 1.1em;
+}
+
+/* Custom Disclaimer Banner (injected via gr.Markdown) */
+.disclaimer-banner-custom {
+    background-color: var(--warning-bg) !important; /* Force background orange */
+    border-left: 6px solid var(--warning-border) !important; /* Force border orange */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    color: var(--text-color) !important; /* Force text color to dark gray */
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+.disclaimer-banner-custom h2 {
+    color: var(--warning-border) !important; /* Force heading color */
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/* Gradio Chatbot Component Styling */
+.gr-chatbot { /* This targets the overall chatbot container */
+    flex-grow: 1;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 15px;
+    overflow-y: auto;
+    max-height: 550px;
+    margin-bottom: 20px;
+    /* Force chat background to pure white */
+    background-color: var(--chat-bubble-bot) !important;
+    scroll-behavior: smooth;
+    /* If you want a separate shadow for the chat window *inside* the main container: */
+    /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); */
+}
+
+/* Styling individual messages */
+.gr-message {
+    margin-bottom: 15px;
+    max-width: 85%;
+    word-wrap: break-word;
+    line-height: 1.5;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.gr-message-bubble { /* The actual content bubble within a message */
+    padding: 12px 18px;
+    border-radius: 20px;
+}
+
+/* Gradio applies classes like 'user' and 'bot' to the message container div */
+.gr-message.user .gr-message-bubble {
+    background-color: var(--primary-light) !important; /* Force user bubble color */
+    color: #fff !important; /* Force text color */
+    margin-left: auto;
+    border-bottom-right-radius: 5px; /* Less rounded on source side */
+}
+
+.gr-message.bot .gr-message-bubble {
+    background-color: var(--chat-bubble-bot) !important; /* Force bot bubble color */
+    color: var(--text-color) !important; /* Force text color */
+    margin-right: auto;
+    border-bottom-left-radius: 5px; /* Less rounded on source side */
+    white-space: pre-wrap; /* Preserve formatting from LLM */
+}
+
+/* Markdown styling within bot messages (Gradio converts markdown to HTML) */
+.gr-message.bot strong {
+    font-weight: 600;
+    color: var(--primary-color) !important;
+}
+.gr-message.bot em {
+    font-style: italic;
+}
+.gr-message.bot a {
+    color: var(--primary-color) !important;
+    text-decoration: none;
+    font-weight: 500;
+}
+.gr-message.bot a:hover {
+    text-decoration: underline;
+}
+.gr-message.bot ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 0;
+}
+.gr-message.bot ul li {
+    margin-bottom: 5px;
+}
+
+
+/* Gradio Input Area Styling */
+.gr-form {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.gr-textarea {
+    flex-grow: 1;
+    padding: 15px 20px !important;
+    border: 1px solid var(--border-color);
+    border-radius: 25px !important; /* Pill-shaped input */
+    font-size: 1.05em;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gr-textarea:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(106, 153, 78, 0.2);
+}
+
+/* Gradio Buttons (Submit and Clear) */
+.gr-button {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 50% !important; /* Circular button */
+    width: 50px !important;
+    min-width: 50px !important;
+    height: 50px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    font-size: 1.2em !important;
+    transition: background-color 0.3s ease, transform 0.2s ease !important;
+    flex-shrink: 0 !important;
+    padding: 0 !important;
+}
+
+.gr-button:hover {
+    background-color: var(--primary-light) !important;
+    transform: scale(1.05) !important;
+}
+
+.gr-button:active {
+    transform: scale(0.98) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .gradio-container {
+        padding: 15px;
+        border-radius: 10px;
+        min-height: 90vh;
+    }
+
+    .chat-header-custom h1 {
+        font-size: 1.8em;
+    }
+
+    .disclaimer-banner-custom {
+        padding: 15px;
+        font-size: 0.9em;
+    }
+
+    .gr-chatbot {
+        max-height: 400px;
+        padding: 10px;
+    }
+
+    .gr-message {
+        font-size: 0.9em;
+    }
+    .gr-message-bubble {
+        padding: 10px 15px;
+    }
+
+    .gr-form {
+        gap: 10px;
+    }
+
+    .gr-textarea {
+        padding: 12px 18px !important;
+        font-size: 0.95em;
+    }
+
+    .gr-button {
+        width: 45px !important;
+        min-width: 45px !important;
+        height: 45px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    .gradio-container {
+        padding: 10px;
+        border-radius: 8px;
+        min-height: 95vh;
+    }
+    .chat-header-custom h1 {
+        font-size: 1.5em;
+    }
+    .disclaimer-banner-custom {
+        font-size: 0.85em;
+        padding: 10px;
+    }
+    .gr-chatbot {
+        max-height: 350px;
+    }
+}
