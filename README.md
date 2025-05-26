@@ -14,7 +14,7 @@ This project presents a local-first, AI-powered chatbot designed to offer genera
 
 * **Local AI Inference:** Runs powerful LLMs directly on your machine using Ollama, ensuring data privacy and offline capability.
 * **Empathetic Responses:** Designed to provide supportive, general mental well-being advice.
-* **India-Specific Context:** Offers relevant helplines and acknowledges its location (Navi Mumbai, Maharashtra, India).
+* **India-Specific Context:** Offers relevant helplines and acknowledges its location .
 * **Crisis Handling:** Detects crisis keywords and strongly advises seeking immediate professional help, providing critical helpline information.
 * **Clean UI/UX:** A simple, modern web interface built with Gradio and custom CSS for a compassionate user experience.
 * **Concise Responses:** LLM generation parameters are tuned for brief and to-the-point answers suitable for a chat interface.
